@@ -1,0 +1,15 @@
+<div ng-repeat="message in messages">
+	<div class="alert" ng-class="{'alert-success': message.type == true, 'alert-danger': message.type == false}" role="alert"> 
+    	<button type="button" class="close" data-dismiss="alert" ng-click="closeMsg($index)">
+    		<span aria-hidden="true">
+    			&times;
+    		</span>
+    		<span class="sr-only">
+    			Close
+    		</span>
+    	</button>
+    	<strong>
+    		{{message.code}}
+    	</strong>
+    </div>
+</div>

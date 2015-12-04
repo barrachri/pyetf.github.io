@@ -1,0 +1,108 @@
+
+ <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        {{header}}
+                        <small>Control panel</small>
+                    </h1>
+                    
+                    <ol class="breadcrumb"> 
+      <li><a href="#">Home</a></li> 
+      <li class="active">Backtest</li>  
+      </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                <div ng-controller="MsgCtrl" ng-include src="'/static/angularjs/app/dashboard/views/message_box.html'">
+    
+</div>
+
+                   <div ng-controller="portfolio_add_box" ng-include src="'/static/angularjs/app/dashboard/views/form.html'" ></div>
+						
+
+
+                    <!-- top row -->
+                    <div class="row">
+                        <div class="col-xs-12 connectedSortable">
+                              <div id="msg">
+           </div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Backtest data</a></h4>
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="table-responsive">
+            <p>We are working on new awesome function !</p>
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /.panel-body -->
+</div>
+<!-- /.panel -->
+
+
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Main row -->
+                    <div class="row">
+
+                        <!-- Left col -->
+                        <section class="col-lg-6 connectedSortable">
+
+                         <!-- Custom tabs (Charts with tabs)-->
+                            <div class="nav-tabs-custom">
+                                <!-- Tabs within a box -->
+                                <ul class="nav nav-tabs pull-right">
+                            
+                                    <li class="pull-left header"><i class="fa fa-line-chart"></i> Performance</li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="panel-body">
+       
+                                <nvd3 options='hor_bar_options' data='hor_bar_data'></nvd3>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.nav-tabs-custom -->
+                           
+                            <!-- /.box -->
+                        </section>
+                        <!-- /.Left col -->
+
+
+                        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                        <section class="col-lg-6 connectedSortable">
+                            <!-- Custom tabs (Charts with tabs)-->
+                            <div class="nav-tabs-custom">
+                                <!-- Tabs within a box -->
+                                <ul class="nav nav-tabs pull-right">
+                            
+                                    <li class="pull-left header"><i class="fa fa-pie-chart"></i> Asset Allocation</li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="panel-body">
+                                    <nvd3 options='pie_options' data='pie_data'></nvd3>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.nav-tabs-custom -->
+                        </section>
+                        <!-- right col -->
+
+
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->  

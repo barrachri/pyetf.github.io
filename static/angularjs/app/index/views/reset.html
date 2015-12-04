@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="center-form panel">
+      <div class="panel-body">
+        <h3 class="text-center">Reset password</h3>
+        <form method="post" ng-submit="resetPassword()" name="resetPasswordForm" novalidate> 
+          <div class="form-group has-feedback">
+            <input class="form-control input-lg" type="email" name="username" ng-model="user.username" placeholder="Email" required autofocus>
+            <span class="ion-at form-control-feedback"></span>
+          </div>
+
+          <div class="form-group has-feedback">
+            <div class="alert alert-danger" ng-show="resetpasswordError">
+            <b>{{resetpasswordError.code}}</b>
+          </div>
+          </div>
+          <button type="submit" ng-disabled="resetPasswordForm.$invalid" class="btn btn-lg  btn-block btn-success">Send email to reset your password</button>
+          
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

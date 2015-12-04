@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="center-form panel">
+      <div class="panel-body">
+        <h3 class="text-center">Save your new password</h3>
+        <form method="post" ng-submit="saveResetPassword()" name="resetPasswordForm" novalidate> 
+
+          <div class="form-group has-feedback">
+            <input password-strength class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" ng-minlength="5" required>
+            <span class="ion-key form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="resetPasswordForm.password.$error.minlength" ng-messages="resetPasswordForm.password.$error.minlength">
+              <div ng-message="pattern">Password must be at least 5 chars</div>
+          </div>
+          </div>
+
+           <div class="form-group has-feedback">
+            <input password-strength class="form-control input-lg" type="password" name="password2" ng-model="user.password2" placeholder="Retype password" required>
+            <span class="ion-key form-control-feedback"></span>
+            <div class="help-block text-danger" ng-if="!passwordEquals() && !resetPasswordForm.password2.$pristine" ng-messages="resetPasswordForm.password2.$error">
+              <div ng-message="pattern">Password must be the same</div>
+          </div>
+          </div>
+
+          <div class="form-group has-feedback">
+            <div class="alert alert-danger" ng-show="resetPasswordError">
+            <b>{{resetPasswordError.code}}</b>
+          </div>
+          </div>
+
+
+          <button type="submit" ng-disabled="resetPasswordForm.$invalid || !passwordEquals()" class="btn btn-lg  btn-block btn-success">Save password</button>
+          
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

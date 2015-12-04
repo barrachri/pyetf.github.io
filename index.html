@@ -1,1 +1,116 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en" ng-app="indexApp">
+<head>
+    <meta charset="utf-8">
+    <title>ETFY.IN</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <!--  <link rel="shortcut icon" href="favicon.ico">  -->
+    <!-- bootstrap 3.0.2 -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Flat UI -->
+    <link rel="stylesheet" href="/static/css/flat-ui.css">
+    <!-- Font Awesome 4.1.0 -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Ionicons -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet">
+    <link href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css" rel="stylesheet">
+    <link href="/static/angularjs/app/styles/style.css" rel="stylesheet">
+    <!-- end -->
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- header-11 -->
+        <header class="header-11">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar col-sm-12" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle"><i class="fa fa-bars fa-2x"></i></button>
+
+                            <a class="brand" href="#">ETFY</a>
+                        </div>
+                        <div class="collapse navbar-collapse pull-right">
+                            <ul class="nav pull-left">
+                            <li><a href="/#/?scrollTo=learn_more">Learn more</a></li>
+                            <li><a href="/#/?scrollTo=pricing">Pricing</a></li>
+
+                                <li><a href="/#/login">Log in</a></li>
+                            </ul>
+                            <form class="navbar-form pull-left">
+
+                                <a class="btn btn-default" href="/#/signup">Start now for free</a>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+
+
+
+        <div ng-view></div>
+
+        
+
+        <!-- footer-2 -->
+        <footer class="footer-2 bg-midnight-blue">
+            <div class="container">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="https://twitter.com/etfyin"><i class="fa fa-twitter"></i> Twitter</a>
+                        </li>
+                        <li>
+                            <a href="mailto:support@etfy.in"><i class="fa fa-envelope"></i> Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="additional-links">
+                    Be sure to take a look to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- Google Analytics: change UA-41799543-4 to be your site's ID -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-41799543-4', 'auto');
+      ga('send', 'pageview');
+
+  </script>
+
+    <!-- bower:js -->
+    <script src="/static/angularjs/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/static/angularjs/bower_components/angular/angular.js"></script>
+    <script src="/static/angularjs/bower_components/json3/lib/json3.js"></script>
+    <script src="/static/angularjs/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/static/angularjs/bower_components/angular-route/angular-route.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="/static/angularjs/app/index/scripts/app.js"></script>
+    <script src="/static/angularjs/app/index/scripts/controllers.js"></script>
+    <script src="/static/angularjs/app/index/scripts/service.js"></script>
+    <script src="static/js/modernizr.custom.js"></script>
+    <script src="static/js/startup-kit.js"></script>
+    <!-- end -->
+
+</body>
+</html>

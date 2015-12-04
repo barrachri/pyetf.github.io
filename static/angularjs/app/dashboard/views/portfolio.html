@@ -1,0 +1,230 @@
+
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        {{header}}
+        <small>Control panel</small>
+        <a ng-click="status_add_etf=!status_add_etf" id="add_new_etf" class="btn btn-success btn-sm"><i class="fa fa-pencil-square-o"></i> Buy an ETF<a/> <a ng-click="removePortfolio(data_mirror.portfolios[index_portfolio].id)" id="remove_pt" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Remove portfolio</a>
+    </h1>
+
+
+
+    <ol class="breadcrumb">
+        <li><a href="#/">Home</a></li>
+        <li class="active"><a href="#/portfolio">Portfolio</a></li>
+        <li class="active">{{data_mirror.portfolios[index_portfolio].name}}</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+<div ng-controller="MsgCtrl" ng-include src="'/static/angularjs/app/dashboard/views/message_box.html'">
+
+</div>
+
+<div ng-controller="portfolio_add_box" ng-include src="'/static/angularjs/app/dashboard/views/form.html'" ></div>
+
+<!-- Small boxes (Stat box) -->
+<div class="row" ng-show="status_add_etf">
+    <div class="col-xs-12">
+        <div class="box box-info">
+            <div class="box-header">
+                <h3 class="box-title">Add a new ETF</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-default btn-sm" ng-click="status_add_etf=!status_add_etf"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <p class="margin text-danger"><strong>As ETF ticker you need to use the RIC (Reuters Instrument Code) provided by ETF fund. It's something like TICKER.STOCKEXCHANGE</strong></p>
+                <p class="margin text-danger"><strong>Any other code (ISIN, Bloomberg code) won't works! See the image below if you have any further doubt</strong></p>
+                <form role="form" name="add_etf" ng-submit="addetf(newEtf)" novalidate>
+                    <table class="table table-hover">
+                        <tr>
+                            <th>#</th>
+                            <th>Ticker</th>
+                            <th>Quantity</th>
+                            <th>Buy price</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="col-xs-3">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" maxlength="20" name="etf_code"  placeholder="ETF RIC ticker" ng-model="newEtf.ticker" required>
+                                </div>
+                            </td>
+                            <td class="col-xs-3">
+                                <div class="form-group" ng-class="{'has-warning': add_etf.quantity.$invalid && !add_etf.quantity.$pristine}">
+                                    <input  type="number" class="form-control" maxlength="20" name="quantity" id="quantity" placeholder="ETF quantity" ng-model="newEtf.quantity" min="0" required>
+                                    <label class="control-label" for="quantity" ng-show="add_etf.quantity.$invalid && !add_etf.quantity.$pristine"><strong>Quantity must be valid a number</strong></label>
+                                </div>
+                            </td>
+                            <td class="col-xs-3">
+                                <div class="form-group" ng-class="{'has-warning': add_etf.price.$invalid && !add_etf.price.$pristine}">
+                                    <input  type="number" class="form-control" maxlength="20" name="price" id="price" placeholder="ETF buy price" ng-model="newEtf.price" min="0" required>
+                                    <label class="control-label" for="price" ng-show="add_etf.price.$invalid && !add_etf.price.$pristine"><strong>Price must be a valid number</strong></label>
+                                </div>
+                            </td>
+                            <td>
+                            </td>
+                            <td></td>
+                            <td><button type="submit" class="btn btn-primary" ng-disabled="add_etf.$invalid">Submit</button></td>
+
+
+                        </tr>
+                    </table>
+                </form>
+                <img src="/static/images/etf_ric_.png" class="img-responsive" alt="Responsive image">
+            </div>
+
+
+
+        </div><!-- /.box-info -->
+    </div><!-- /.col-xs-12 -->
+</div><!-- /.row -->
+
+<!-- Small boxes (Stat box) -->
+<div class="row">
+    <div class="col-lg-4 col-xs-12">
+        <!-- small box -->
+        <div class="panel mini-box">
+                                <span class="box-icon bg-info">
+                                    <i class="fa fa-line-chart"></i>
+                                </span>
+            <div class="box-info">
+                <p class="size-h2">{{data_mirror.portfolios[index_portfolio].performance}}
+                    <span class="size-h4">%</span>
+                </p>
+                <p class="text-muted">
+                    <span data-i18n="Growth">Portfolio performance</span>
+                </p>
+            </div>
+
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-4 col-xs-12">
+        <!-- small box -->
+        <div class="panel mini-box">
+                                <span class="box-icon bg-warning">
+                                    <i class="fa fa-thumbs-up"></i>
+                                </span>
+            <div class="box-info">
+                <p class="size-h2">{{data_mirror.portfolios[index_portfolio].best_etf[0]}}
+                    <span class="size-h4"></span>
+                </p>
+                <p class="text-muted">
+                    <span data-i18n="Growth">Portfolio best ETF</span>
+                </p>
+            </div>
+
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-4 col-xs-12">
+        <!-- small box -->
+        <div class="panel mini-box">
+                                <span class="box-icon bg-danger">
+                                    <i class="fa fa-money"></i>
+                                </span>
+            <div class="box-info">
+                <p class="size-h2">{{data_mirror.portfolios[index_portfolio].value}}
+                    <span class="size-h4"></span>
+                </p>
+                <p class="text-muted">
+                    <span data-i18n="Growth">Portfolio value</span>
+                </p>
+            </div>
+
+        </div>
+    </div><!-- ./col -->
+</div><!-- /.row -->
+
+<!-- top row -->
+<div class="row">
+    <div class="col-xs-12 connectedSortable">
+        <div id="msg">
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">{{data_mirror.portfolios[index_portfolio].name}}</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th>#</th>
+                        <th>Ticker</th>
+                        <th>Quantity</th>
+                        <th ng-show="!edit.toggle">Buy price</th>
+                        <th ng-show="edit.toggle">Sell price</th>
+                        <th>+/-</th>
+                        <th>Total</th>
+                        <th>% of PF</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                    <tr ng-repeat="etf in data_mirror.portfolios[index_portfolio].etfs">
+
+                        <td>{{$index + 1}}</td>
+                        <td><a href="#/etfs/{{etf.ticker}}">{{etf.ticker}}</a></td>
+
+                        <td ng-show="!edit.toggle" >{{etf.quantity}}</td>
+                        <td  ng-show="edit.toggle" class="col-xs-2"><input type="number" class="form-control input-sm" name="lastname" ng-model="etf.sell_quantity"  required></td>
+
+                        <td ng-show="!edit.toggle" >{{etf.price}}</td>
+                        <td  ng-show="edit.toggle" class="col-xs-2"><input type="number" class="form-control input-sm" name="lastname" ng-model="etf.sell_price" required></td>
+                        <td>
+                            <span class="badge" ng-class="{'bg-green': etf.performance >= 0,'bg-red':etf.performance < 0}">{{etf.performance | number:3}} %</span>
+                        </td>
+                        <td>{{etf.total | number:3}}</td>
+                        <td>{{etf.total_percent | number:2}} %</td>
+                        <td>
+
+                         <button class="btn btn-success btn-xs"  ng-show="!edit.toggle && data_mirror.portfolios[index_portfolio].etfs.length" ng-click="edit.toggle=!edit.toggle"><i class="fa fa-money"></i> Sell</button>
+
+                            <button class="btn btn-info btn-xs" ng-show="edit.toggle" ng-click="edit.toggle=!edit.toggle"><i class="fa fa-pencil-square-o"></i> Close</button>
+
+                            <button class="btn btn-warning btn-xs" ng-show="edit.toggle" ng-click="saveItem(etf.ticker, etf.id, etf.sell_quantity, etf.sell_price)" ng-disabled="isUnvalid(etf.sell_quantity, etf.quantity, etf.sell_price)"><i class="fa fa-check-square-o"></i> Sell !</button>
+
+                            <button class="btn btn-danger btn-xs" ng-click="removeEtf(etf.id)"><i class="fa fa-trash-o"></i> Remove</button>
+
+                        </td>
+                    </tr>
+
+                </table>
+                <table class="table" ng-if="!data_mirror.portfolios[index_portfolio].etfs.length">
+                    <tr class="warning">
+
+
+                        <td>This portfolio is empty</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <!-- Main row -->
+        <div class="row">
+
+            <!-- Left col -->
+
+            <!-- /.Left col -->
+
+
+            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+
+
+            <!-- right col -->
+
+
+        </div><!-- /.row (main row) -->
+
+</section><!-- /.content -->
+</aside><!-- /.right-side -->
+</div><!-- ./wrapper -->

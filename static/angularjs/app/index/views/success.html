@@ -1,0 +1,29 @@
+{% extends "login_signup/base.html" %}
+{% block content %}
+<div class="form-box" id="login-box">
+    <div class="header">It's time to check your email !</div>
+
+
+        {% csrf_token %}
+        <div class="body bg-gray">
+             <p >
+         We have done all in our power to reset your password. If your email is correct you'll receive
+         a reset email.
+         <strong>You need only to follow the instructions.</strong>
+       </p>
+        </div>
+        <div class="footer">
+            <a href="{% url 'django.contrib.auth.views.login' %}"><button type="submit" class="btn bg-olive btn-block">Back to login page</button></a>
+
+        </div>
+
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}

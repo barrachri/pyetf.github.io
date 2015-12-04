@@ -1,0 +1,27 @@
+ <!-- Small boxes (Stat box) -->
+ <div class="row" ng-show="add_portfolio_box">
+ 	<div class="col-xs-12">
+ 		<div class="box box-info">
+ 			<div class="box-header">
+ 				<h3 class="box-title">Add a new portfolio</h3>
+ 				<div class="box-tools pull-right">
+ 					<button class="btn btn-default btn-sm" ng-click="change_add_portfolio_box()"><i class="fa fa-times"></i></button>
+ 				</div>
+ 			</div>
+ 			<form role="form" name="addPortfolio" ng-submit="savePortfolio(new_portfolio)" novalidate>
+ 				<div class="box-body">
+                    <div class="alert alert-danger" ng-if="addPortfolio.new_portfolio.$error.maxlength && !addPortfolio.new_portfolio.$pristine">
+                        <b>Portfolio's name can't be over 20 chars</b>
+                    </div>
+ 					<p class="margin">Please enter the name of your new portfolio, <strong>remember it must be unique !</strong></p>
+ 					<div class="input-group input-group-sm">
+ 						<input type="text" name="new_portfolio" ng-maxlength="20" class="form-control" ng-model="new_portfolio.name" required> 
+ 						<span class="input-group-btn">
+ 							<button class="btn btn-info btn-flat" type="submit" ng-disabled="addPortfolio.$invalid">Save</button>
+ 						</span>
+ 					</div><!-- /.input-group -->
+ 				</div><!-- /.box-body -->
+ 			</form>
+ 		</div><!-- /.box-info -->
+ 	</div><!-- /.col-xs-12 -->
+					</div><!-- /.row -->
